@@ -6,6 +6,7 @@
     <script type="text/javascript" language="javascript">
       $(function(){
 
+        parent = $(this)
         frame = $('#editor')
         frame.designMode('on')
         editor = $($('#editor').contentDocument()).find('body')
@@ -17,20 +18,24 @@
             ThesaurusRex.replaceHtml(editor)
           )
         }
-        // run check() every half-second if the textarea has focus
-        // setInterval(function(){
-        //   check()
-        // }, 3000)
+        // run check() every second if the editor has focus
+        setInterval(function(){
+          editor.attr('focused') && check()
+        }, 1000)
 
         // setup the placeholder value for the textarea
-        editor.val(frame.attr('placeholder'))
-        editor.blur(function(){
-          if(editor.html() == '')
-            editor.html(frame.attr('placeholder'))
-        })
-        editor.focus(function(){
-          if(editor.html() == frame.attr('placeholder'))
-            editor.html('')
+        frame.load(function(){
+          editor.html(frame.attr('placeholder'))
+          parent.focus(function(){
+            editor.attr('focused', false)
+            if(editor.text() == '')
+              editor.html(frame.attr('placeholder'))
+          })
+          parent.blur(function(){
+            editor.attr('focused', true)
+            if(editor.html() == frame.attr('placeholder'))
+              editor.text('')
+          })
         })
       })
     </script>
