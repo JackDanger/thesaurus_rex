@@ -16,10 +16,42 @@
       })
     </script>
     <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
       #container {
         clear: both;
         width: 700px;
-        margin: 2em auto;
+        margin: 0 auto;
+      }
+      #banner {
+        width: 698px;
+        padding-top: 0.25em;
+        padding-bottom: 0.25em;
+        position: relative;
+        background-color: #FF0;
+        border-left:   1px solid #AA0;
+        border-right:  1px solid #AA0;
+      }
+      #banner .title {
+        margin-left: 0.5em;
+        font-size: 1.3em;
+      }
+      #banner .credit {
+        margin-left: 1em;
+        margin-right: 1em;
+        font-size: 0.85em;
+        line-height: 2em;
+        color: #008;
+      }
+      #banner a.fork {
+        position: absolute;
+        right: 1em;
+        top: 0;
+      }
+      a img {
+        border: none;
       }
       textarea {
         font-size: 1.2em;
@@ -31,6 +63,17 @@
   </head>
   <body>
     <div id="container">
+      <div id="banner">
+        <span class="title">
+          Thesaurus Rex
+        </span>
+        <span class="credit">
+          Idea by <a href="http://twitter.com/gilesgoatboy">@gilesgoatboy</a>, code by <a href="http://twitter.com/JackDanger/">JackDanger</a>
+        </span>
+        <a href="http://github.com/JackDanger/thesaurus_rex/" title="Fork This!" class="fork">
+          <img src="fork.png" alt="Fork This!"/>
+        </a>
+      </div>
       <textarea id="text" placeholder="Begin writing to see how Thesaurus Rex likes your text..."></textarea>
     </div>
   </body>
