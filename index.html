@@ -19,6 +19,9 @@
         // setup the placeholder value for the textarea
 
         var t = $('textarea')
+
+        t.attr('designmode', true)
+
         t.val(t.attr('placeholder'))
         t.blur(function(){
           t.attr('focused', false)
