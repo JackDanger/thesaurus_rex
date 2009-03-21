@@ -24,6 +24,49 @@
             ThesaurusRex.replaceHtml(editor)
           )
         }
+        loadDefaultText = function(){
+          editor.html(
+            ""+<r><![CDATA[
+<h1 class = "title"><font size = "+1">Tracy Unick,<br>911 Dispatcher<br>and Trainer.</font> </h1>
+<p align="center"><FONT SIZE="-1">BY <a href="mailto:syeagley@hotmail.com">SUZANNE YEAGLEY</a></FONT>
+<p>
+  <a href="http://www.mcsweeneys.net/links/unusualjobs/19dispatcher.html">Stolen From: http://www.mcsweeneys.net/</a>
+</p>
+<p align="center"><font size="-1">- - - -</font></p>
+<p>Q: How did you become a 911 dispatcher?<br>
+A: It was an accident. I was a teenage mother and I'd tried several different jobs. When my son was about 8, I decided I needed to find a "career." Everyone told me that the best jobs were government jobs, so I started applying for every city and county job I was qualified for. About nine months later, I got the call, and after doing it for a while I realized it was right up my alley. 
+<p>It's a constant challenge for my brain. I'm a bit of an adrenaline junkie.
+<p>Q: What is your job exactly? Do you work random shifts?<br>
+A: I'm a training manager, so I work straight day shift. Most dispatchers do rotating shifts like police, fire, and EMS. Day, swing, overnight ...
+<p>Q: What kind of area does your office cover?<br>
+A: The entire county. We do all business for 9 police departments, 19 fire departments, and 3 EMS.
+<p>Q: How many people do you have on the phones?<br>
+A: Anywhere from six to nine people. Anyone can potentially answer the phone. If there is an accident on I-5, we'll have everyone answering the phone, whether they're a call-taker or working a busy police or fire radio. 
+<p>Q: How many legitimate calls do you get each day?<br>
+A: Actual calls for service—maybe three, four hundred a day.
+<p>Q: Are they legitimate?<br>
+A: Legitimate? Legitimate is a state of mind. Those 300 are the ones we enter a call for in our system.
+<p>If I had to guess the percentage of calls that are a true emergency, I'd say about 7 percent. We see domestic violence and assaults every day, and then maybe some bigger stuff once or twice a week.
+<p>Q: Do you get crank calls?<br>
+A: <i>All</i> the time. Like small kids playing with the phone, or kids who've had a 911 dispatcher come and do a talk at their school, so they test it out.
+<p>Q: When someone calls, is it like on TV? Is it like a giant room with a big screen and everyone wearing headphones?<br>
+A: There are six 19-inch screens at each workstation, plus four big-screen monitors in the room for the building cameras.
+<p>We don't wear uniforms, though, and our place is a little messy.
+<p>Q: Can you trace where people live based on their phone number?<br>
+A: Assuming it's a land line—a regular home phone—the screen shows your address and the phone number the call is coming from.
+<p>Q: And how about cell phones?<br>
+A: For all cell phones that are phase-2 wireless, we should be able to get a hit within 50-foot accuracy. But if the call comes from an apartment complex, we might send an officer, and they'll have to knock on every door. So we tell people to use your home phone when you're at home.
+<p>Q: Can you call 911 from a cell phone? For some reason, I feel like I read on the side of a bus that there's some special protocol ...<br>
+A: You can dial 911 from <i>any</i> cell phone, even if it's not activated. Most cell phones have an auto function, like if you press and hold 9 it calls us. We call it "butt dialing." We track it, but it's a huge resource drain.
+<p>We always call people back to ensure they're OK and sometimes they'll say, "I did <i>not</i> call 911." My standard response is "I didn't pick your number out of nowhere."
+<p>Q: Do you remember the first call you ever took?<br>
+A: Yes. My first call was a guy who was pissed off because there was a vehicle parked at the port for three days and he wanted it moved.
+<p>One of the most shocking things is how mundane so many of the calls are.
+<p>One time, I had the most hysterical girl on the phone; it turned out to be a teenager who had locked her keys in the car.
+<p>I started around Halloween, and a woman called and said there were "gangs of kids walking down the street."
+            ]]></r>
+          )
+        }
       })
     </script>
     <style>
@@ -86,7 +129,8 @@
         </a>
       </div>
       <iframe id="editor" placeholder="Begin writing to see how Thesaurus Rex likes your text..."></iframe>
-      <input type="submit" onclick="check(); return false;" value="Check for redundancy" />
+      <input type="submit" onclick="loadDefaultText(); return false;" value="Load Default Text" style="float: right;"/>
+      <input type="submit" onclick="check(); return false;" value="Go Thesaurus Rex, Go!" />
     </div>
   </body>
 </html>
