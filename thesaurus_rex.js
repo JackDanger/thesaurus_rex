@@ -24,23 +24,27 @@ ThesaurusRex = (function(){
   highlight = function(word, level){
     // assumes white background
     hex = (16 - ((level > 16) ? 16 : level)).toString(16);
-    return "<span style='color: #"+hex+hex+hex+"'; style='ThesaurusRexified'>"+word+"</span>"
+    return "<span style='background-color: #"+hex+hex+hex+"'; style='ThesaurusRexified'>"+word+"</span>"
   }
 
   growl = function(text, updateFunction){
     var words = text.split(/ /)
-    var wordcounts = {}
+    var wordCounts = {}
+    var wordsToChange = []
     for(i=0;i<words.length; i++){
       word = words[i]
-      wordcounts[word] = (wordcounts[word] || 0) + 1
+      wordCounts[word] = (wordCounts[word] || 0) + 1
+      if(wordCounts[word] > 1) wordsToChange.push(word)
     }
-    for(i=0;i<words.length; i++){
-      console.log(words[i], wordcounts[words[i]])
-      if(wordcounts[words[i]] > 1){
-        words[i] = highlight(word, wordcounts[word])
-      }
+    for(i=0;i<wordsToChange.length; i++){
+      updateFunction(
+        wordsToChange[i],
+        highlight(
+          wordsToChange[i],
+          wordCounts[wordsToChange[i]]
+        )
+      )
     }
-    updateFunction(words.join(' '))
   }
 
   return {
