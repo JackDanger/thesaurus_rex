@@ -13,15 +13,8 @@
         // setup ThesaurusRex events
         check = function(){
           ThesaurusRex.growl(
-
             editor.text(),
-
-            function(word, highlightedWord){
-              editor.html(
-                editor.html().replace(new RegExp(word, 'g'), highlightedWord)
-              )
-            }
-
+            ThesaurusRex.replaceHtml(editor)
           )
         }
         // run check() every half-second if the textarea has focus

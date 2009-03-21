@@ -47,7 +47,16 @@ ThesaurusRex = (function(){
     }
   }
 
+  replaceHtml = function(element){
+    return function(word, highlightedWord){
+      element.html(
+        element.html().replace(new RegExp(word, 'g'), highlightedWord)
+      )
+    }
+  }
+
   return {
-    growl: growl
+    growl: growl,
+    replaceHtml: replaceHtml
   }
 })()
