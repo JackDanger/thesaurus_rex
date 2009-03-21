@@ -62,11 +62,14 @@ ThesaurusRex = (function(){
     'perhaps','six','fill','table','east','travel','weight','less',
     'language','morning','among'
   ]
+  stopWordsIndex = {}
+  for(i=0;i<stopWords.length;i++)
+    stopWordsIndex[stopWords[i]] = 1
 
   highlight = function(word, level){
     // assumes white background
     hex = (16 - ((level > 16) ? 16 : level)).toString(16);
-    return "<span style='background-color: #F"+hex+hex+"'; class='ThesaurusRexified'>"+word+"</span>"
+    return "<span style='background-color: #F"+hex+hex+"' class='ThesaurusRexified'>"+word+"</span>"
   }
 
   growl = function(text, updateFunction){
@@ -75,8 +78,10 @@ ThesaurusRex = (function(){
     var wordsToChange = []
     for(i=0;i<words.length; i++){
       word = words[i]
-      wordCounts[word] = (wordCounts[word] || 0) + 1
-      if(wordCounts[word] > 1) wordsToChange.push(word)
+      if(!stopWordsIndex[word]){
+        wordCounts[word] = (wordCounts[word] || 0) + 1
+        if(wordCounts[word] > 1) wordsToChange.push(word)
+      }
     }
     for(i=0;i<wordsToChange.length; i++){
       console.log('calling updateFunction for '+wordsToChange[i])
@@ -92,10 +97,9 @@ ThesaurusRex = (function(){
 
   replaceHtml = function(element){
     return function(word, highlightedWord){
-      text = element.text()
-      text = text.replace(/\n/g, '\\n<br />')
-      text = text.replace(new RegExp(word, 'g'), highlightedWord)
-      element.html(text)
+      element.html(
+        element.html().replace(new RegExp(word, 'g'), highlightedWord)
+      )
     }
   }
 

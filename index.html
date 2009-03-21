@@ -14,9 +14,13 @@
 
         // setup ThesaurusRex events
         check = function(){
-          // editor.html(editor.text())
+          editor
+            .find("span.ThesaurusRexified")
+              .each(function(){
+                $(this).replaceWith($(this).text())
+              })
           ThesaurusRex.growl(
-            editor.text(),
+            editor.html(),
             ThesaurusRex.replaceHtml(editor)
           )
         }
