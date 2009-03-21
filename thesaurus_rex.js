@@ -50,9 +50,10 @@ ThesaurusRex = (function(){
 
   replaceHtml = function(element){
     return function(word, highlightedWord){
-      element.html(
-        element.text().replace(new RegExp(word, 'g'), highlightedWord)
-      )
+      text = element.text()
+      text = text.replace(/\n/g, '\\n<br />')
+      text = text.replace(new RegExp(word, 'g'), highlightedWord)
+      element.html(text)
     }
   }
 

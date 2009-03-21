@@ -9,35 +9,17 @@
         parent = $(this)
         frame = $('#editor')
         frame.designMode('on')
+        frame.execCommand('formatBlock', '<p>')
         editor = $($('#editor').contentDocument()).find('body')
 
         // setup ThesaurusRex events
         check = function(){
-          editor.html(editor.text())
+          // editor.html(editor.text())
           ThesaurusRex.growl(
             editor.text(),
             ThesaurusRex.replaceHtml(editor)
           )
         }
-        // run check() every second if the editor has focus
-        setInterval(function(){
-          frame.attr('focused') && check()
-        }, 1000)
-
-        // setup the placeholder value for the textarea
-        frame.load(function(){
-          editor.html(frame.attr('placeholder'))
-          parent.focus(function(){
-            frame.attr('focused', null)
-            if(editor.text() == '')
-              editor.html(frame.attr('placeholder'))
-          })
-          parent.blur(function(){
-            frame.attr('focused', true)
-            if(editor.html() == frame.attr('placeholder'))
-              editor.text('')
-          })
-        })
       })
     </script>
     <style>
@@ -100,6 +82,7 @@
         </a>
       </div>
       <iframe id="editor" placeholder="Begin writing to see how Thesaurus Rex likes your text..."></iframe>
+      <input type="submit" onclick="check(); return false;" value="Check for redundancy" />
     </div>
   </body>
 </html>
