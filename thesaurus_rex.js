@@ -24,7 +24,7 @@ ThesaurusRex = (function(){
   highlight = function(word, level){
     // assumes white background
     hex = (16 - ((level > 16) ? 16 : level)).toString(16);
-    return "<span style='background-color: #"+hex+hex+hex+"'; style='ThesaurusRexified'>"+word+"</span>"
+    return "<span style='background-color: #F"+hex+hex+"'; style='ThesaurusRexified'>"+word+"</span>"
   }
 
   growl = function(text, updateFunction){
