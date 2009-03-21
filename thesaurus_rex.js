@@ -35,8 +35,8 @@ ThesaurusRex = (function(){
       wordcounts[word] = (wordcounts[word] || 0) + 1
     }
     for(i=0;i<words.length; i++){
-      word = words[i]
-      if(wordcounts[word] > 1){
+      console.log(words[i], wordcounts[words[i]])
+      if(wordcounts[words[i]] > 1){
         words[i] = highlight(word, wordcounts[word])
       }
     }
