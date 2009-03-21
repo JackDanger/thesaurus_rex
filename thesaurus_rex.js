@@ -1,7 +1,7 @@
 ThesaurusRex = (function(){
 
   // stopwords taken from http://www.world-english.org/english500.htm
-  stopWords = [
+  var stopWords = [
     'the','name','of','very','to','through','and','just','a','form',
     'in','much','is','great','it','think','you','say','that','help',
     'he','low','was','line','for','before','on','turn','are','cause',
@@ -62,17 +62,17 @@ ThesaurusRex = (function(){
     'perhaps','six','fill','table','east','travel','weight','less',
     'language','morning','among'
   ]
-  stopWordsIndex = {}
+  var stopWordsIndex = {}
   for(i=0;i<stopWords.length;i++)
     stopWordsIndex[stopWords[i]] = 1
 
-  highlight = function(word, level){
+  var highlight = function(word, level){
     // assumes white background
     hex = (16 - ((level > 16) ? 16 : level)).toString(16);
     return "<span style='background-color: #F"+hex+hex+"' class='ThesaurusRexified'>"+word+"</span>"
   }
 
-  growl = function(text, updateFunction){
+  var scan = function(text, updateFunction){
     var words = text.split(/ /)
     var wordCounts = {}
     var wordsToChange = []
@@ -95,7 +95,7 @@ ThesaurusRex = (function(){
     }
   }
 
-  replaceHtml = function(element){
+  var replaceHtml = function(element){
     return function(word, highlightedWord){
       element.html(
         element.html().replace(new RegExp(word, 'g'), highlightedWord)
@@ -104,7 +104,7 @@ ThesaurusRex = (function(){
   }
 
   return {
-    growl: growl,
+    scan: scan,
     replaceHtml: replaceHtml
   }
 })()
