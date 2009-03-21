@@ -78,13 +78,15 @@ ThesaurusRex = (function(){
     var wordsToChange = []
     for(i=0;i<words.length; i++){
       word = words[i]
-      if(!stopWordsIndex[word]){
+      if( !stopWordsIndex[word] &&
+          !word.match(/[<>\/\\'"]/) &&
+          word.match(/[A-Za-z]/)
+        ){
         wordCounts[word] = (wordCounts[word] || 0) + 1
         if(wordCounts[word] > 1) wordsToChange.push(word)
       }
     }
     for(i=0;i<wordsToChange.length; i++){
-      console.log('calling updateFunction for '+wordsToChange[i])
       updateFunction(
         wordsToChange[i],
         highlight(
