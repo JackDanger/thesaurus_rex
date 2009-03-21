@@ -21,11 +21,29 @@ ThesaurusRex = (function(){
   "low","he","help","that","say","you","think","it","great","is","sentence","in","form","a","just",
   "and","through","to","very","of","name","the"]
 
-  highlight = function(html){
-    html.split(/[ ,]/)
+  highlight = function(word, level){
+    // assumes white background
+    hex = (16 - ((level > 16) ? 16 : level)).toString(16);
+    return "<span style='color: #"+hex+hex+hex+"'; style='ThesaurusRexified'>"+word+"</span>"
+  }
+
+  growl = function(text, updateFunction){
+    var words = text.split(/ /)
+    var wordcounts = {}
+    for(i=0;i<words.length; i++){
+      word = words[i]
+      wordcounts[word] = (wordcounts[word] || 0) + 1
+    }
+    for(i=0;i<words.length; i++){
+      word = words[i]
+      if(wordcounts[word] > 1){
+        words[i] = highlight(word, wordcounts[word])
+      }
+    }
+    updateFunction(words.join(' '))
   }
 
   return {
-    growl: highlight
+    growl: growl
   }
-})
+})()
