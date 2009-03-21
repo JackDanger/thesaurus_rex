@@ -4,14 +4,31 @@
     <script src="thesaurus_rex.js" type="text/javascript" language="javascript"></script>
     <script type="text/javascript" language="javascript">
       $(function(){
-        $('textarea').val($('textarea').attr('placeholder'))
-        $('textarea').blur(function(){
-          if($('textarea').val() == '')
-            $('textarea').val($('textarea').attr('placeholder'))
+
+        // setup ThesaurusRex events
+        check = function(){
+          $('textarea').val(
+            ThesaurusRex.growl( $('textarea').val() )
+          )
+        }
+        // run check() every half-second if the textarea has focus
+        setInterval(function(){
+          $('textarea').attr('focused') && check()
+        }, 500)
+
+        // setup the placeholder value for the textarea
+
+        var t = $('textarea')
+        t.val(t.attr('placeholder'))
+        t.blur(function(){
+          t.attr('focused', false)
+          if(t.val() == '')
+            t.val(t.attr('placeholder'))
         })
-        $('textarea').focus(function(){
-          if($('textarea').val() == $('textarea').attr('placeholder'))
-            $('textarea').val('')
+        t.focus(function(){
+          t.attr('focused', true)
+          if(t.val() == t.attr('placeholder'))
+            t.val('')
         })
       })
     </script>
