@@ -37,6 +37,7 @@ ThesaurusRex = (function(){
       if(wordCounts[word] > 1) wordsToChange.push(word)
     }
     for(i=0;i<wordsToChange.length; i++){
+      console.log('calling updateFunction for '+wordsToChange[i])
       updateFunction(
         wordsToChange[i],
         highlight(
@@ -50,7 +51,7 @@ ThesaurusRex = (function(){
   replaceHtml = function(element){
     return function(word, highlightedWord){
       element.html(
-        element.html().replace(new RegExp(word, 'g'), highlightedWord)
+        element.text().replace(new RegExp(word, 'g'), highlightedWord)
       )
     }
   }
