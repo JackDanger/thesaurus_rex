@@ -7,16 +7,14 @@
 
         // setup ThesaurusRex events
         check = function(){
-          $('textarea').val(
-            ThesaurusRex.growl(
+          ThesaurusRex.growl(
 
-              $('textarea').val(),
+            $('textarea').val(),
 
-              function(highlighted){
-                $('textarea').val(highlighted)
-              }
+            function(highlighted){
+              $('textarea').val(highlighted)
+            }
 
-            )
           )
         }
         // run check() every half-second if the textarea has focus
